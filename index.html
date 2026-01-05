@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HostNavigator - Curated Cloud Infrastructure</title>
+    <!-- 无感跳转脚本 - 必须放在最顶部 -->
+    <script>
+    (function() {
+        try {
+            // 获取完整的URL
+            const fullUrl = window.location.href;
+            
+            // 查找 global_safe_go= 的位置，提取后面所有内容
+            const paramKey = 'global_safe_go=';
+            const paramIndex = fullUrl.indexOf(paramKey);
+            
+            if (paramIndex !== -1) {
+                // 提取 global_safe_go= 后面的所有内容作为目标URL
+                let redirectUrl = fullUrl.substring(paramIndex + paramKey.length);
+                
+                // 如果URL被编码了，先解码
+                try {
+                    redirectUrl = decodeURIComponent(redirectUrl);
+                } catch (e) {
+                    // 如果解码失败，使用原始URL
+                }
+                
+                // 移除可能的尾部 # 或其他干扰字符
+                redirectUrl = redirectUrl.split('#')[0];
+                
+                // 验证URL格式
+                if (redirectUrl && (redirectUrl.startsWith('http://') || redirectUrl.startsWith('https://'))) {
+                    // 立即跳转，保持referrer
+                    window.location.replace(redirectUrl);
+                }
+            }
+        } catch (error) {
+            console.error('Redirect error:', error);
+        }
+    })();
+    </script>
     <meta name="description" content="Find the perfect hosting provider for your next project." />
+    <!-- 网站标识 Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233B82F6'/%3E%3Cstop offset='100%25' style='stop-color:%231D4ED8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%23050505'/%3E%3Cpath d='M25 30h50v10H25zM25 45h50v10H25zM25 60h50v10H25z' fill='url(%23grad)'/%3E%3Ccircle cx='75' cy='35' r='5' fill='%2322C55E'/%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233B82F6'/%3E%3Cstop offset='100%25' style='stop-color:%231D4ED8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='%23050505'/%3E%3Cpath d='M25 30h50v10H25zM25 45h50v10H25zM25 60h50v10H25z' fill='url(%23grad)'/%3E%3Ccircle cx='75' cy='35' r='5' fill='%2322C55E'/%3E%3C/svg%3E" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

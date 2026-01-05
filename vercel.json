@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Referrer-Policy",
+          "value": "unsafe-url"
+        }
+      ]
+    }
+  ]
+}
+
