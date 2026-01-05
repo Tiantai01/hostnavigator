@@ -19,7 +19,7 @@ export const PROVIDERS: Provider[] = [
     features: ['Google C2 Machines', 'Cloudflare Enterprise', 'Edge Caching', '24/7 Expert Support'],
     logoSlug: 'kinsta',
     primaryColor: '#5333ED',
-    websiteUrl: 'https://kinsta.com',
+    websiteUrl: 'https://kinsta.com/?kaid=OILVILJCMPOD',
     metrics: [
       { label: 'Uptime', value: '99.9%' },
       { label: 'TTFB', value: '< 100ms' },
